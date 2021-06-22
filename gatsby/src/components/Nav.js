@@ -11,7 +11,8 @@ const NavStyles = styled.nav`
   justify-content: center;
 
   a {
-    margin: 0 15px;
+    font-size: 3rem;
+    margin: 0 40px;
     --rotate: -3deg;
     transform: rotate(var(--rotate));
     order: 1;
@@ -26,8 +27,14 @@ const NavStyles = styled.nav`
 const Nav = () => (
   <NavStyles>
     <Link to="/">Home</Link>
-    <Link to="/series">Series</Link>
     <Link to="/publishers">Publishers</Link>
+    <a
+      href="/comicgradingforeveryone"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Grade Your Comic
+    </a>
   </NavStyles>
 );
 

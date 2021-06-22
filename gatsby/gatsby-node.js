@@ -53,6 +53,33 @@ const turnComicsIntoPages = async ({ graphql, actions }) => {
   });
 };
 
+const turnPublishersIntoPages = async ({ graphql, actions }) => {
+  const { data } = await graphql(`
+    query {
+      publishers: allSanityPublishers {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  `);
+
+  data.publishers.nodes.forEach((publisher) => {
+    actions.createPage({
+      path: `publisher/${publisher.name}`,
+      component: resolve('./src/templates/Publisher.js'),
+      context: {
+        id: publisher.id,
+      },
+    });
+  });
+};
+
 export const createPages = async (params) => {
-  await Promise.all([turnSeriesIntoPages(params), turnComicsIntoPages(params)]);
+  await Promise.all([
+    turnSeriesIntoPages(params),
+    turnComicsIntoPages(params),
+    turnPublishersIntoPages(params),
+  ]);
 };

@@ -2,14 +2,29 @@ import { graphql, Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Container from '../components/Container';
 
 const SeriesStyles = styled.main`
   width: 100%;
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 66px - 80px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 3em;
+  margin-top: 15px;
+  margin-bottom: -15px;
 `;
 
 const SingleComicStyles = styled.div`
-  width: 20%;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
 `;
 
 const series = ({
@@ -20,18 +35,21 @@ const series = ({
   const allComics = nodes;
 
   return (
-    <SeriesStyles>
-      {allComics.map((comic) => (
-        <Link to={`/comic/${comic.slug.current}`}>
-          <SingleComicStyles key={comic.id}>
-            <p>
-              {comic.serie.title} #{comic.number} {comic.title}
-            </p>
-            <GatsbyImage image={getImage(comic.images[0].asset)} alt="hello" />
-          </SingleComicStyles>
-        </Link>
-      ))}
-    </SeriesStyles>
+    <Container>
+      <SeriesStyles>
+        {allComics.map((comic) => (
+          <Link key={comic.id} to={`/comic/${comic.slug.current}`}>
+            <SingleComicStyles>
+              <GatsbyImage
+                image={getImage(comic.images[0].asset)}
+                alt="hello"
+              />
+              <p>#{comic.number}</p>
+            </SingleComicStyles>
+          </Link>
+        ))}
+      </SeriesStyles>
+    </Container>
   );
 };
 
@@ -44,6 +62,7 @@ export const query = graphql`
         id
         number
         title
+        price
         slug {
           current
         }

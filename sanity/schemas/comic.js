@@ -33,15 +33,6 @@ export default {
       ]
     },
     {
-      name: 'publisher',
-      title: 'Publisher',
-      type: 'reference',
-      to: [{ type: 'publishers' }],
-      validation: Rule => [
-        Rule.required().error('Please Enter the Publisher of the Comic. If Publisher does not exist, create it first!')
-      ]
-    },
-    {
       name: 'price',
       title: 'Price',
       type: 'number',

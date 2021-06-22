@@ -21,11 +21,6 @@ export const query = graphql`
           current
         }
         title
-        image {
-          asset {
-            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-          }
-        }
         id
       }
     }

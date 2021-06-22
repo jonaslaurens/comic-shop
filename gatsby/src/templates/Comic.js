@@ -58,10 +58,7 @@ const Comic = ({ data }) => {
             <small>{title}</small>
             <br />
             <strong>{formatMoney(price)}</strong>
-            <p>
-              Fill in the form below if You are interested and I'll get back to
-              You ASAP!
-            </p>
+            <p>Fill in the form below if you want this comic!</p>
           </div>
           <ContactStyles>
             <ContactForm />

@@ -6,7 +6,7 @@ const ContainerStyles = styled.div`
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 66px - 80px);
 
   @media (min-width: 1150px) {
     width: 1140px;

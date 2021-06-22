@@ -20,33 +20,36 @@ const PublishersStyles = styled.main`
   }
 `;
 
-const Publishers = ({
+const Publisher = ({
   data: {
-    publishers: { nodes },
+    series: { nodes },
   },
 }) => (
   <Container>
     <PublishersStyles>
-      {nodes.map((publisher) => (
-        <Link key={publisher.id} to={`/publisher/${publisher.name}`}>
-          {publisher.name}
+      {nodes.map((serie) => (
+        <Link key={serie.id} to={`/series/${serie.slug.current}`}>
+          {serie.title}
         </Link>
       ))}
     </PublishersStyles>
   </Container>
 );
 
-Publishers.propTypes = {
+Publisher.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default Publishers;
+export default Publisher;
 
 export const query = graphql`
-  query {
-    publishers: allSanityPublishers {
+  query ($id: String!) {
+    series: allSanitySerie(filter: { publisher: { id: { eq: $id } } }) {
       nodes {
-        name
+        slug {
+          current
+        }
+        title
         id
       }
     }

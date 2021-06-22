@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const LandingStyles = styled.main`
   width: 100%;
-  height: calc(100vh - 66px);
+  height: calc(100vh - 66px - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@ const IndexPage = () => (
     <h1>Welcome to the Hall of Justice Comic Shop!</h1>
     <p>
       Browse all{' '}
-      <Link to="/comics" className="tilt">
+      <Link to="/publishers" className="tilt">
         Comics
       </Link>{' '}
       I'm currently offering and contact me about a comic you are interested in
