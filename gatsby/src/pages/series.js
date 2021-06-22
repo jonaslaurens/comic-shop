@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SeriesStyles = styled.main`
   width: 100%;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 66px);
 `;
 
 const comics = ({
@@ -19,7 +19,7 @@ const comics = ({
   return (
     <SeriesStyles>
       {series.map((serie) => (
-        <Link key={serie.id} to={`/comics/${serie.slug.current}`}>
+        <Link key={serie.id} to={`/series/${serie.slug.current}`}>
           {serie.title}
         </Link>
       ))}

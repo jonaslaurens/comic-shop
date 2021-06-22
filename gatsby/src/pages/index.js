@@ -20,8 +20,11 @@ const IndexPage = () => (
   <LandingStyles>
     <h1>Welcome to the Hall of Justice Comic Shop!</h1>
     <p>
-      Browse all <Link to="/comics">Comics</Link> I'm currently offering and
-      contact me about a comic you are interested in
+      Browse all{' '}
+      <Link to="/comics" className="tilt">
+        Comics
+      </Link>{' '}
+      I'm currently offering and contact me about a comic you are interested in
     </p>
   </LandingStyles>
 );

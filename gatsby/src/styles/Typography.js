@@ -1,14 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const Typography = createGlobalStyle`
-  html, span {
+  html, span, p, a, li, input, textare, strong {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     color: var(--black);
     font-weight: 300;
-  }
-
-  a, p, li, span, input, textarea {
-    color: var(--black);
   }
 
   a {
@@ -16,6 +12,15 @@ const Typography = createGlobalStyle`
     &:hover {
       color: var(--red);
     }
+  }
+
+  p {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  strong {
+    font-weight: bold;
   }
 
   p, li {
@@ -105,14 +110,13 @@ const Typography = createGlobalStyle`
     }
   }
 
-  p, a, li {
+  p, a, li, strong {
     font-size: 1.8rem;
-    padding: 15px;
     margin: 0;
     line-height: 4rem;
 
     @media (min-width: 440px) {
-      font-size: 2.5rem;
+      font-size: 2.0rem;
     }
   }
 

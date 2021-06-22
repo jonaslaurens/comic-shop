@@ -12,6 +12,14 @@ const NavStyles = styled.nav`
 
   a {
     margin: 0 15px;
+    --rotate: -3deg;
+    transform: rotate(var(--rotate));
+    order: 1;
+    transition: 0.3s;
+
+    &:hover {
+      --rotate: 6deg;
+    }
   }
 `;
 
@@ -19,6 +27,7 @@ const Nav = () => (
   <NavStyles>
     <Link to="/">Home</Link>
     <Link to="/series">Series</Link>
+    <Link to="/publishers">Publishers</Link>
   </NavStyles>
 );
 

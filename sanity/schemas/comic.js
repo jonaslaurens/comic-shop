@@ -22,15 +22,7 @@ export default {
         Rule.required().error('Please Enter the Number of the Comic')
       ]
     },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: doc => `${doc.title}-${doc.number}`,
-        maxLength: 100,
-      },
-    },
+
     {
       name: 'serie',
       title: 'Series',
@@ -38,6 +30,15 @@ export default {
       to: [{ type: 'serie' }],
       validation: Rule => [
         Rule.required().error('Please Enter the Serie of the Comic. If Serie does not exist, create it first!')
+      ]
+    },
+    {
+      name: 'publisher',
+      title: 'Publisher',
+      type: 'reference',
+      to: [{ type: 'publishers' }],
+      validation: Rule => [
+        Rule.required().error('Please Enter the Publisher of the Comic. If Publisher does not exist, create it first!')
       ]
     },
     {
@@ -59,6 +60,15 @@ export default {
       name: 'posted',
       title: 'Posted on',
       type: 'datetime',
+    },
+     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: doc => `${doc.title}-${doc.number}-${doc.posted}`,
+        maxLength: 100,
+      },
     },
   ],
 };
