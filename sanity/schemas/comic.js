@@ -1,4 +1,5 @@
 import {BsBook as icon} from 'react-icons/bi';
+import PriceInput from '../components/PriceInput';
 
 export default {
   name: 'comic',
@@ -16,7 +17,10 @@ export default {
       name: 'number',
       title: 'Number',
       type: 'number',
-      description: 'Comic Number'
+      description: 'Comic Number',
+      validation: Rule => [
+        Rule.required().error('Please Enter the Number of the Comic')
+      ]
     },
     {
       name: 'slug',
@@ -32,6 +36,17 @@ export default {
       title: 'Series',
       type: 'reference',
       to: [{ type: 'serie' }],
+      validation: Rule => [
+        Rule.required().error('Please Enter the Serie of the Comic. If Serie does not exist, create it first!')
+      ]
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'number',
+      description: 'Price of the pizza in cent',
+      validation: (Rule) => Rule.min(100).max(500000),
+      inputComponent: PriceInput,
     },
     {
       name: 'images',
