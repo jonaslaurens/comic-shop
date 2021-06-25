@@ -1,40 +1,23 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Container from '../components/Container';
+import ComicList from '../components/ComicList';
 
-const PublishersStyles = styled.main`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+import { getPublishers } from '../utils/getPublishers';
+import PublisherFilter from '../components/PublisherFilter';
 
-  a {
-    font-size: 2.8rem;
-    padding: 20px 0 15px 0;
-    display: inline-block;
+const Publishers = ({ data }) => {
+  const publishers = getPublishers(data.comics.nodes);
 
-    @media (min-width: 440px) {
-      font-size: 3rem;
-    }
-  }
-`;
-
-const Publishers = ({
-  data: {
-    publishers: { nodes },
-  },
-}) => (
-  <Container>
-    <PublishersStyles>
-      {nodes.map((publisher) => (
-        <Link key={publisher.id} to={`/publisher/${publisher.name}`}>
-          {publisher.name}
-        </Link>
-      ))}
-    </PublishersStyles>
-  </Container>
-);
+  return (
+    <Container>
+      {console.log(data)}
+      <PublisherFilter publishers={publishers} />
+      <ComicList comics={1} />
+    </Container>
+  );
+};
 
 Publishers.propTypes = {
   data: PropTypes.object.isRequired,
@@ -44,10 +27,32 @@ export default Publishers;
 
 export const query = graphql`
   query {
-    publishers: allSanityPublishers {
+    comics: allSanityComic {
       nodes {
-        name
         id
+        images {
+          asset {
+            gatsbyImageData
+          }
+        }
+        number
+        serie {
+          publisher {
+            id
+            name
+          }
+          title
+          slug {
+            current
+          }
+          id
+        }
+        title
+        slug {
+          current
+        }
+        qty
+        price
       }
     }
   }
