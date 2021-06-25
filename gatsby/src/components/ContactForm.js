@@ -16,26 +16,24 @@ const FormStyles = styled.form`
     display: grid;
     gap: 1rem;
     align-content: start;
-    &.order,
-    &.menu {
-      grid-column: span 1;
-      .sizes {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 5px;
-        button {
-          margin: 0;
-        }
-      }
-    }
+
     label {
       input,
       textarea {
         width: 100%;
         padding: 8px 5px;
+        border: 1px solid var(--grey);
       }
     }
+  }
+
+  .sendit {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    display: block;
   }
 
   .siroop {
@@ -108,12 +106,12 @@ const ContactForm = () => {
           onChange={updateValues}
         />
       </fieldset>
-      <fieldset disabled={loading}>
+      <div className="sendit">
         <button type="submit" disabled={loading}>
           <FaPaperPlane />
-          &nbsp;{loading ? 'Submitting...' : 'Submit'}
+          &nbsp;{loading ? 'Placing Order...' : 'Order Ahead'}
         </button>
-      </fieldset>
+      </div>
     </FormStyles>
   );
 };

@@ -79,9 +79,29 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .tilt {
-    transform: rotate(-5deg);
     position: relative;
     display: inline-block;
+    --rotate: -3deg;
+    transform: rotate(var(--rotate));
+    order: 1;
+    transition: 0.3s;
+    font-size: inherit;
+
+    &::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--yellow);
+      transform: skew(-12deg)  rotate(6deg);
+      z-index: -1;
+    }
+
+    &:hover {
+      --rotate: 6deg;
+    }
   }
 
 `;

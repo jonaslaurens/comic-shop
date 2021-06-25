@@ -1,6 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { FiShoppingCart } from 'react-icons/fi';
+import Cart from './Cart';
 
 const NavStyles = styled.nav`
   width: 100%;
@@ -28,6 +30,9 @@ const Nav = () => (
   <NavStyles>
     <Link to="/">Home</Link>
     <Link to="/publishers">Publishers</Link>
+    <Link to="/cart">
+      <Cart />
+    </Link>
     <a
       href="/comicgradingforeveryone"
       rel="noopener noreferrer"

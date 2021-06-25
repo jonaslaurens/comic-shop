@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const ContainerStyles = styled.div`
-  width: 100%;
+  max-width: 100%;
   padding: 0 15px;
   margin: 0 auto;
   min-height: calc(100vh - 66px - 80px);

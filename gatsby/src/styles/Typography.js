@@ -110,7 +110,7 @@ const Typography = createGlobalStyle`
     }
   }
 
-  p, a, li, strong {
+  p, a, li, strong, span {
     font-size: 1.8rem;
     margin: 0;
     line-height: 4rem;
@@ -128,37 +128,7 @@ const Typography = createGlobalStyle`
     font-weight: 400;
   }
 
-  .text-link {
-    color: var(--black);
-    text-decoration: underline;
-    text-decoration-color: var(--gradient);
-    /* Chrome renders this weird with this font, so we turn it off */
-    text-decoration-skip-ink: none;
-    display: inline-block;
-    transition: all .3s ease-in;
-    font-weight: 400;
 
-    position: relative;
-    padding: 0;
-    text-decoration: none;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 2px;
-      left: 0;
-      height: 1px;
-      width: 100%;
-      background: var(--accent);
-      background: var(--gradient);
-    }
-
-    &:hover {
-      opacity: 1;
-      color: var(--accent);
-      transform: translateY(-0.25em);
-    }
-  }
 `;
 
 export default Typography;

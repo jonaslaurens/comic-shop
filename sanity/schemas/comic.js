@@ -41,6 +41,15 @@ export default {
       inputComponent: PriceInput,
     },
     {
+      name: 'qty',
+      title: 'Quantity',
+      type: 'number',
+      description: 'Quantity of the Comic',
+      validation: Rule => [
+        Rule.required().error('Please Enter a quantity, selling nothing is cheap')
+      ]
+    },
+    {
       name: 'images',
       title: 'Comic images',
       type: 'array',
