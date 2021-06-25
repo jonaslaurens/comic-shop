@@ -41,6 +41,14 @@ const CartDetailsStyles = styled.div`
   display: flex;
   flex-direction: column;
 
+  p {
+    padding: 0.4em 0;
+  }
+
+  strong {
+    font-size: 1em;
+  }
+
   form {
     margin-top: 50px;
   }

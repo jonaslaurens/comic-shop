@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
+import Container from '../components/Container';
 
 const LandingStyles = styled.main`
   width: 100%;
@@ -17,16 +18,21 @@ const LandingStyles = styled.main`
 
 // markup
 const IndexPage = () => (
-  <LandingStyles>
-    <h1>Welcome to the Hall of Justice Comic Shop!</h1>
-    <p>
-      Browse all{' '}
-      <Link to="/publishers" className="tilt">
-        Comics
-      </Link>{' '}
-      I'm currently offering and contact me about a comic you are interested in
-    </p>
-  </LandingStyles>
+  <Container>
+    <LandingStyles>
+      <h1>Welcome to the Hall of Justice Comic Shop!</h1>
+      <p>
+        Browse all Comics I'm currently offering and contact me about a comic
+        you are interested in.
+      </p>
+      <Link to="/publishers">
+        <button type="button">Browse Comics</button>
+      </Link>
+      <h3>
+        <Link to="/disclaimer">Disclaimer</Link>
+      </h3>
+    </LandingStyles>
+  </Container>
 );
 
 export default IndexPage;

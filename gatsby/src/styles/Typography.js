@@ -40,6 +40,7 @@ const Typography = createGlobalStyle`
   h1 {
     font-size: 4rem;
     text-align: center;
+    margin: .5em;
 
     @media (min-width: 440px) {
       font-size: 5rem;
@@ -111,12 +112,12 @@ const Typography = createGlobalStyle`
   }
 
   p, a, li, strong, span {
-    font-size: 1.8rem;
+    font-size: 1.8em;
     margin: 0;
     line-height: 4rem;
 
     @media (min-width: 440px) {
-      font-size: 2.0rem;
+      font-size: 1.5em;
     }
   }
 

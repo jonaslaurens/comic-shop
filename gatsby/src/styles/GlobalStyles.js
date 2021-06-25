@@ -30,13 +30,17 @@ const GlobalStyles = createGlobalStyle`
     background: var(--red);
     color: white;
     border: 0;
-    padding: 0.6rem 1rem;
+    padding: 1rem 2rem;
     border-radius: 2px;
+    margin: 30px 0px;
     cursor: pointer;
+    font-family: 'Bangers';
+    font-size: 1.2em;
     --cast: 2px;
     box-shadow: var(--cast) var(--cast) 0 var(--grey);
     text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
     transition: all 0.2s;
+
     &:hover {
       --cast: 4px;
     }
@@ -69,8 +73,9 @@ const GlobalStyles = createGlobalStyle`
 
   hr {
     border: 0;
-    height: 8px;
+    height: 3px;
     background-color: var(--black);
+    opacity: .2;
     background-size: 1500px;
   }
 
