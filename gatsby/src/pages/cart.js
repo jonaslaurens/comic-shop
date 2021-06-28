@@ -84,6 +84,7 @@ const Cart = () => {
               serie={item.serie}
               number={item.number}
               price={item.price}
+              id={item.id}
             />
           ))}
         </CartItemsStyles>

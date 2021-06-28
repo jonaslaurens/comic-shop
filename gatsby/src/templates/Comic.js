@@ -44,7 +44,7 @@ const ComicInfoStyles = styled.div`
 const Comic = ({ data }) => {
   const { images, title, serie, number, price } = data.comic.nodes[0];
 
-  const { addItem } = useContext(CartContext);
+  const { addComic } = useContext(CartContext);
 
   return (
     <Container>
@@ -61,7 +61,7 @@ const Comic = ({ data }) => {
             <br />
             <strong>{formatMoney(price)}</strong>
           </div>
-          <button type="button" onClick={() => addItem(data.comic.nodes[0])}>
+          <button type="button" onClick={() => addComic(data.comic.nodes[0])}>
             Add to cart
           </button>
         </ComicInfoStyles>

@@ -1,7 +1,9 @@
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { VscClose } from 'react-icons/vsc';
 import { formatMoney } from '../utils/formatMoney';
+import { CartContext } from '../store/cartStore';
 
 const CartItemStyles = styled.div`
   width: 100%;
@@ -25,19 +27,42 @@ const DetailStyles = styled.div`
   padding: 0 15px;
 `;
 
-const CartItem = ({ image, title, serie, number, price }) => (
-  <CartItemStyles>
-    <CardImageStyles>
-      <GatsbyImage image={getImage(image.asset)} alt="hello" />
-    </CardImageStyles>
-    <DetailStyles>
-      <p>
-        {serie.title} #{number}
-      </p>
-      <p>{title}</p>
-      <p>{formatMoney(price)}</p>
-    </DetailStyles>
-  </CartItemStyles>
-);
+const CloseButtonStyles = styled.button`
+  background: var(--red);
+  color: var(--white);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+`;
+
+const CartItem = ({ image, title, serie, number, price, id }) => {
+  const { removeItem } = useContext(CartContext);
+
+  return (
+    <CartItemStyles>
+      <CardImageStyles>
+        <GatsbyImage image={getImage(image.asset)} alt="hello" />
+      </CardImageStyles>
+      <DetailStyles>
+        <p>
+          {serie.title} #{number}
+        </p>
+        <p>{title}</p>
+        <p>{formatMoney(price)}</p>
+      </DetailStyles>
+      <CloseButtonStyles onClick={() => removeItem(id)}>
+        <VscClose />
+      </CloseButtonStyles>
+    </CartItemStyles>
+  );
+};
 
 export default CartItem;
