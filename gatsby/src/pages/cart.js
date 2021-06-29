@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import CartItem from '../components/CartItem';
 import ContactForm from '../components/ContactForm';
@@ -34,7 +34,7 @@ const CartContentStyles = styled.div`
 const CartItemsStyles = styled.div`
   width: 100%;
   max-height: 750px;
-  overflow: scroll;
+  overflow: hidden scroll;
 `;
 
 const CartDetailsStyles = styled.div`

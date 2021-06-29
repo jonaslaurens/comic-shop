@@ -1,8 +1,7 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Container from '../components/Container';
-import ComicList from '../components/ComicList';
 
 import { getPublishers } from '../utils/getPublishers';
 import PublisherFilter from '../components/PublisherFilter';
@@ -12,9 +11,7 @@ const Publishers = ({ data }) => {
 
   return (
     <Container>
-      {console.log(data)}
       <PublisherFilter publishers={publishers} />
-      <ComicList comics={1} />
     </Container>
   );
 };

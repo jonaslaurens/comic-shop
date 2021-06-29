@@ -21,7 +21,7 @@ const PriceInput = ({
     <h2>
       {title} - {value && formatMoney(value / 100)}
     </h2>
-    <p>{description} <small>Between 100 and 5000</small></p>
+    <p>{description} <small>Between 100 and 500000</small></p>
 
     <input
       type={name}

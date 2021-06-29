@@ -5,7 +5,6 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import Container from '../components/Container';
 import { formatMoney } from '../utils/formatMoney';
-import ContactForm from '../components/ContactForm';
 import { CartContext } from '../store/cartStore';
 
 const SingleComicPageStyles = styled.main`
@@ -27,6 +26,12 @@ const ComicInfoStyles = styled.div`
   flex-direction: column;
   padding: 0 30px 38px 0;
 
+  .pricetag {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   h2,
   p {
     text-align: left;
@@ -42,7 +47,7 @@ const ComicInfoStyles = styled.div`
 `;
 
 const Comic = ({ data }) => {
-  const { images, title, serie, number, price } = data.comic.nodes[0];
+  const { images, title, serie, number, price, qty } = data.comic.nodes[0];
 
   const { addComic } = useContext(CartContext);
 
@@ -53,14 +58,17 @@ const Comic = ({ data }) => {
           <GatsbyImage image={getImage(images[0].asset)} alt="hello" />
         </ImageStyles>
         <ComicInfoStyles>
-          <div>
+          <>
             <h2>
               {serie.title} #{number}
             </h2>
             <small>{title}</small>
             <br />
-            <strong>{formatMoney(price)}</strong>
-          </div>
+            <div className="pricetag">
+              <strong>{formatMoney(price)}</strong>
+              <span>{qty} in stock</span>
+            </div>
+          </>
           <button type="button" onClick={() => addComic(data.comic.nodes[0])}>
             Add to cart
           </button>
@@ -95,6 +103,7 @@ export const query = graphql`
         serie {
           title
         }
+        qty
       }
     }
   }

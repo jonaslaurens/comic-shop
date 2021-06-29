@@ -36,24 +36,39 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     font-family: 'Bangers';
     font-size: 1.2em;
-    --cast: 2px;
-    box-shadow: var(--cast) var(--cast) 0 var(--grey);
     text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
     transition: all 0.2s;
 
     &:hover {
-      --cast: 4px;
+      transform: rotate(3deg);
     }
   }
 
-  .gatsby-image-wrapper img[src*=base64\\,] {
+  /* .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
-  }
+  } */
 
   /* Scrollbar Styles */
-  body::-webkit-scrollbar {
-    width: 12px;
+  ::-webkit-scrollbar {
+     width: 12px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--red) ;
+    border-radius: 6px;
+    border: 3px solid var(--white);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 
   html {
@@ -61,15 +76,6 @@ const GlobalStyles = createGlobalStyle`
     scrollbar-color: var(--red) var(--white);
   }
 
-  body::-webkit-scrollbar-track {
-    background: var(--white);
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--red) ;
-    border-radius: 6px;
-    border: 3px solid var(--white);
-  }
 
   hr {
     border: 0;
