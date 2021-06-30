@@ -8,11 +8,15 @@ const useContact = ({ values, resetValues }) => {
   const submitContact = async (cart) => {
     setLoading(true);
 
+    // created data object
+    const order = await createOrder(cart);
+
     const body = {
       name: values.name,
       email: values.email,
       message: values.message,
       siroop: values.siroop,
+      order,
     };
 
     // update comics quantity on server
@@ -26,11 +30,6 @@ const useContact = ({ values, resetValues }) => {
         body: JSON.stringify(cart),
       }
     );
-
-    // created data object
-    const order = createOrder(cart);
-
-    console.log(order);
 
     /* // send data to server
     const resonseFormSubmit = await fetch(
