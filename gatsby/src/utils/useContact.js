@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { createOrder } from './createOrder';
 
 const useContact = ({ values, resetValues }) => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,12 @@ const useContact = ({ values, resetValues }) => {
       }
     );
 
-    // send data to server
+    // created data object
+    const order = createOrder(cart);
+
+    console.log(order);
+
+    /* // send data to server
     const resonseFormSubmit = await fetch(
       `${process.env.GATSBY_SERVERLESS_BASE}/formSubmit`,
       {
@@ -64,7 +70,7 @@ const useContact = ({ values, resetValues }) => {
         progress: undefined,
       });
       resetValues({ name: '', email: '', message: '', siroop: '' });
-    }
+    } */
   };
 
   return {

@@ -76,9 +76,9 @@ const Cart = () => {
     <Container>
       <CartContentStyles>
         <CartItemsStyles>
-          {cart.map((item) => (
+          {cart.map((item, index) => (
             <CartItem
-              key={item.id}
+              key={`${item.id}${index}`}
               title={item.title}
               image={item.images[0]}
               serie={item.serie}

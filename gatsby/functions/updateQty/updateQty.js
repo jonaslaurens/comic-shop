@@ -12,10 +12,40 @@ const client = sanityClient({
   useCdn: false,
 });
 
-exports.handler = async (event, context) => {
-  const id = JSON.parse(event.body);
+exports.handler = async (event) => {
+  const items = JSON.parse(event.body);
 
-  client
+  const status = false;
+
+  items.forEach((item) => {
+    client
+      .patch(item._id) // Document ID to patch
+      .dec({ qty: 1 })
+      .commit() // Perform the patch and return a promise
+      .then((updatedComic) => {
+        console.log(updatedComic);
+      })
+      .catch((err) => {
+        console.error('The update failed: ', err.message);
+      });
+  });
+
+  if (status) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        msg: 'Success',
+      }),
+    };
+  }
+  return {
+    statusCode: 400,
+    body: JSON.stringify({
+      msg: 'Update failed',
+    }),
+  };
+
+  /* client
     .patch(id) // Document ID to patch
     .dec({ qty: 1 })
     .commit() // Perform the patch and return a promise
@@ -25,5 +55,5 @@ exports.handler = async (event, context) => {
     })
     .catch((err) => {
       console.error('Oh no, the update failed: ', err.message);
-    });
+    }); */
 };
