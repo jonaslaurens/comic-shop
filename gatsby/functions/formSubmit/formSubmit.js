@@ -41,8 +41,12 @@ exports.handler = async (event, context) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
+      type: 'OAuth2',
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_USER_PASSWORD,
+      clientId: process.env.GMAIL_OAUTH_ID,
+      clientSecret: process.env.GMAIL_OAUTH_SECRET,
+      refreshToken: process.env.GMAIL_OAUTH_REFRESHTOKEN,
     },
   });
 
@@ -56,32 +60,48 @@ exports.handler = async (event, context) => {
       <p>${body.name} contacted with the following message</p>
       <p>${body.message}</p>
       <hr />
-      <br />
-      <table>
+      <table style="width: 100%;background-color: #ffffff;border-collapse: collapse;border-width: 1px;border-color: #a51818;border-style: solid;color: #000000;">
+  <thead style="background-color: #a51818;">
+        <thead style="background-color: #a51818;">
         <tr>
-          <th>Serie</th>
-          <th>Number</th>
+          <th style="border-width: 1px;border-color: #a51818;border-style: solid;padding: 3px;">Serie</th>
+          <th style="border-width: 1px;border-color: #a51818;border-style: solid;padding: 3px;">Number</th>
         </tr>
-        ${body.order
-          .map(
-            (item) => `
-        <tr>
-          <td>${item.serie.title}</td>
-          <td>${item.number}</td>
-        </tr>
-        `
-          )
-          .join('')}
+        </thead>
+        <tbody>
+          ${body.order
+            .map(
+              (item) => `
+          <tr>
+            <td style="border-width: 1px;border-color: #a51818;border-style: solid;padding: 3px;">${item.serie}</td>
+            <td style="border-width: 1px;border-color: #a51818;border-style: solid;padding: 3px;">${item.number}</td>
+          </tr>
+          `
+            )
+            .join('')}
+        </tbody>
       </table>
     `,
   };
 
   // send mail
+
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
-    } else {
-      console.log(`Email sent: ${info.response}`);
+      return {
+        statusCode: error.code,
+        body: JSON.stringify({
+          msg: error.message,
+        }),
+      };
     }
+    console.log(`Email sent: ${info.response}`);
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        msg: 'Success',
+      }),
+    };
   });
 };

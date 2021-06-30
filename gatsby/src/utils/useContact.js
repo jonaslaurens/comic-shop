@@ -9,14 +9,14 @@ const useContact = ({ values, resetValues }) => {
     setLoading(true);
 
     // created data object
-    const order = await createOrder(cart);
+    const orderedComics = await createOrder(cart);
 
     const body = {
       name: values.name,
       email: values.email,
       message: values.message,
       siroop: values.siroop,
-      order,
+      order: orderedComics,
     };
 
     // update comics quantity on server
@@ -31,7 +31,7 @@ const useContact = ({ values, resetValues }) => {
       }
     );
 
-    /* // send data to server
+    // send data to server
     const resonseFormSubmit = await fetch(
       `${process.env.GATSBY_SERVERLESS_BASE}/formSubmit`,
       {
@@ -69,7 +69,7 @@ const useContact = ({ values, resetValues }) => {
         progress: undefined,
       });
       resetValues({ name: '', email: '', message: '', siroop: '' });
-    } */
+    }
   };
 
   return {

@@ -23,7 +23,7 @@ exports.handler = async (event) => {
       .dec({ qty: 1 })
       .commit() // Perform the patch and return a promise
       .then((updatedComic) => {
-        console.log(updatedComic);
+        console.log('update success');
       })
       .catch((err) => {
         console.error('The update failed: ', err.message);
