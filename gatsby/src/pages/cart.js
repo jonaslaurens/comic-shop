@@ -5,7 +5,7 @@ import CartItem from '../components/CartItem';
 import ContactForm from '../components/ContactForm';
 import Container from '../components/Container';
 
-import { CartContext } from '../store/cartStore';
+import { CartContext } from '../store/cartStore.tsx';
 import { calculateTotal } from '../utils/calculateTotal';
 import { formatMoney } from '../utils/formatMoney';
 

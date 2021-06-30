@@ -2,6 +2,7 @@ import React, { createContext, useState, FC } from 'react';
 
 interface IComic {
   id: string;
+  _id: string;
   title: string;
   number: number;
 }
@@ -23,7 +24,8 @@ export const CartContext = createContext<ContextType>(contextDefaultValues);
 export const CartProvider: FC = ({ children }) => {
   const [cart, setCart] = useState<IComic[]>(contextDefaultValues.cart);
 
-  const addComic = (item: IComic) => {
+  const addComic = async (item: IComic) => {
+    // add comic to cart
     setCart((oldCart) => [...oldCart, item]);
   };
 

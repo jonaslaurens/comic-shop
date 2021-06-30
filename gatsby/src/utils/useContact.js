@@ -4,8 +4,7 @@ import { toast } from 'react-toastify';
 const useContact = ({ values, resetValues }) => {
   const [loading, setLoading] = useState(false);
 
-  const submitContact = async (e) => {
-    e.preventDefault();
+  const submitContact = async (cart) => {
     setLoading(true);
 
     const body = {
@@ -15,8 +14,20 @@ const useContact = ({ values, resetValues }) => {
       siroop: values.siroop,
     };
 
+    // update comics quantity on server
+    const responseQtyMutation = await fetch(
+      `${process.env.GATSBY_SERVERLESS_BASE}/updateQty`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart),
+      }
+    );
+
     // send data to server
-    const res = await fetch(
+    const resonseFormSubmit = await fetch(
       `${process.env.GATSBY_SERVERLESS_BASE}/formSubmit`,
       {
         method: 'POST',
@@ -27,10 +38,10 @@ const useContact = ({ values, resetValues }) => {
       }
     );
 
-    // parse the result
-    const text = await res.json();
+    // parse form result
+    const text = await resonseFormSubmit.json();
 
-    if (res.status >= 400 && res.status < 600) {
+    if (resonseFormSubmit.status >= 400 && resonseFormSubmit.status < 600) {
       setLoading(false);
       toast.error(text.msg, {
         position: 'top-center',

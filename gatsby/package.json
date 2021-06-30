@@ -36,6 +36,8 @@
     "gatsby-source-sanity": "^7.0.7",
     "gatsby-transformer-sharp": "^3.7.1",
     "immer": "^8.0.1",
+    "netlify-cli": "^3.39.2",
+    "netlify-lambda": "^2.0.10",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

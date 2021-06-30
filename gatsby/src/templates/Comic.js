@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import Container from '../components/Container';
 import { formatMoney } from '../utils/formatMoney';
-import { CartContext } from '../store/cartStore';
+import { CartContext } from '../store/cartStore.tsx';
 
 const SingleComicPageStyles = styled.main`
   width: 100%;
@@ -104,6 +104,7 @@ export const query = graphql`
           title
         }
         qty
+        _id
       }
     }
   }

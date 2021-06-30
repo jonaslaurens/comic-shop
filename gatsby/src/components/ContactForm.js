@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FaPaperPlane } from 'react-icons/fa';
 import useContact from '../utils/useContact';
 import useForm from '../utils/useForm';
+import { CartContext } from '../store/cartStore.tsx';
 
 const FormStyles = styled.form`
   display: grid;
@@ -62,10 +63,17 @@ const ContactForm = () => {
     siroop: '',
   });
 
+  const { cart } = useContext(CartContext);
+
   const { submitContact, loading } = useContact({ values, resetValues });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitContact(cart);
+  };
+
   return (
-    <FormStyles onSubmit={submitContact}>
+    <FormStyles onSubmit={handleSubmit}>
       <fieldset disabled={loading}>
         <legend>Your Info</legend>
         <label htmlFor="name">
