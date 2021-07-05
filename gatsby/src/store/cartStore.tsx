@@ -1,10 +1,20 @@
-import React, { createContext, useState, FC } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import React, { createContext, useState, FC, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { useComicStore } from './globalState';
+
+interface ISerie {
+  title: String;
+}
 
 interface IComic {
   id: string;
   _id: string;
   title: string;
   number: number;
+  serie: {
+    [key: string]: ISerie;
+  };
 }
 
 type ContextType = {
@@ -24,9 +34,60 @@ export const CartContext = createContext<ContextType>(contextDefaultValues);
 export const CartProvider: FC = ({ children }) => {
   const [cart, setCart] = useState<IComic[]>(contextDefaultValues.cart);
 
+  const data = useStaticQuery(graphql`
+    query {
+      comics: allSanityComic {
+        nodes {
+          id
+          images {
+            asset {
+              gatsbyImageData
+            }
+          }
+          number
+          serie {
+            publisher {
+              id
+              name
+            }
+            id
+            title
+          }
+          _id
+          price
+          qty
+          title
+          posted(fromNow: true)
+        }
+      }
+    }
+  `);
+
+  const { initComics } = useComicStore((state) => state);
+
+  useEffect(() => {
+    initComics(data.comics.nodes);
+  }, []);
+
   const addComic = async (item: IComic) => {
     // add comic to cart
     setCart((oldCart) => [...oldCart, item]);
+
+    toast.success(
+      `
+        ${item.serie.title} #${item.number}
+        ${item.title}
+        has been added to your cart
+      `,
+      {
+        position: 'bottom-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+      }
+    );
   };
 
   const removeItem = (comicId: string) => {

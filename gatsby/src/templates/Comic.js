@@ -3,9 +3,13 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
 import Container from '../components/Container';
 import { formatMoney } from '../utils/formatMoney';
-import { CartContext } from '../store/cartStore.tsx';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { useComicStore } from '../store/globalState';
+import { getQuantity } from '../utils/getQuantity';
 
 const SingleComicPageStyles = styled.main`
   width: 100%;
@@ -47,9 +51,11 @@ const ComicInfoStyles = styled.div`
 `;
 
 const Comic = ({ data }) => {
-  const { images, title, serie, number, price, qty } = data.comic.nodes[0];
+  const { id } = data.comic.nodes[0];
 
-  const { addComic } = useContext(CartContext);
+  const { comics, addComicToCart } = useComicStore((state) => state);
+
+  const { images, serie, number, title, price, qty } = getQuantity(comics, id);
 
   return (
     <Container>
@@ -69,11 +75,23 @@ const Comic = ({ data }) => {
               <span>{qty} in stock</span>
             </div>
           </>
-          <button type="button" onClick={() => addComic(data.comic.nodes[0])}>
+          <button
+            type="button"
+            onClick={() => addComicToCart(data.comic.nodes[0])}
+          >
             Add to cart
           </button>
         </ComicInfoStyles>
       </SingleComicPageStyles>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
     </Container>
   );
 };
@@ -103,7 +121,6 @@ export const query = graphql`
         serie {
           title
         }
-        qty
         _id
       }
     }

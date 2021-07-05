@@ -50,18 +50,11 @@ exports.handler = async (event, context) => {
     },
   });
 
-  // setup mail
-  const mailOptions = {
-    from: body.name,
-    to: process.env.GMAIL_RECEPIENT,
-    subject: 'Hall of Justice Order',
-    generateTextFromHTML: true,
-    html: `
-      <p>${body.name} contacted with the following message</p>
+  const mailContent = `
+    <p>${body.name} contacted with the following message</p>
       <p>${body.message}</p>
       <hr />
       <table style="width: 100%;background-color: #ffffff;border-collapse: collapse;border-width: 1px;border-color: #a51818;border-style: solid;color: #000000;">
-  <thead style="background-color: #a51818;">
         <thead style="background-color: #a51818;">
         <tr>
           <th style="border-width: 1px;border-color: #a51818;border-style: solid;padding: 3px;">Serie</th>
@@ -80,8 +73,15 @@ exports.handler = async (event, context) => {
             )
             .join('')}
         </tbody>
-      </table>
-    `,
+      </table>`;
+
+  // setup mail
+  const mailOptions = {
+    from: body.name,
+    to: process.env.GMAIL_RECEPIENT,
+    subject: 'Hall of Justice Order',
+    generateTextFromHTML: true,
+    html: mailContent,
   };
 
   // send mail

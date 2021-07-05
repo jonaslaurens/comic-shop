@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
 
@@ -16,7 +16,6 @@ const LandingStyles = styled.main`
   }
 `;
 
-// markup
 const IndexPage = () => (
   <Container>
     <LandingStyles>
@@ -34,5 +33,4 @@ const IndexPage = () => (
     </LandingStyles>
   </Container>
 );
-
 export default IndexPage;
