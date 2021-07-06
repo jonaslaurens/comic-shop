@@ -3,7 +3,7 @@ import create from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 export const useComicStore = create(
-  devtools((set) => ({
+  devtools((set, get) => ({
     comics: [],
     cart: [],
     initComics: (DBComics) =>
@@ -12,32 +12,30 @@ export const useComicStore = create(
       }),
 
     // add item to cart and update qty
-    addComicToCart: (comic) =>
+    addComicToCart: (id) =>
       set((state) => {
-        // create comic to add
-        const comicToAdd = { ...comic, qty: 1 };
-
+        // copy the original arrays
         const prevCart = [...state.cart];
+        const prevComics = [...state.comics];
 
-        console.log(prevCart);
-        // check if comic already is in cart
-        if (prevCart.length === 0) {
-          state.cart = [...state.cart, comicToAdd];
-        } else if (
-          prevCart.find((foundComic) => foundComic.id === comicToAdd.id)
-        ) {
-          // update qty of current item
-        }
+        const comic = state.getComic(id)[0];
 
-        // if comic exists update qty
+        // get the item index
+        const index = state.comics.findIndex((item) => item.id === id);
 
-        // add to cart
+        // copy comics
+
+        // set availability to false
+        prevComics[index].available = false;
+
+        // add comic to cart
+        prevCart.push(comic);
 
         // launch toast if all went well
         toast.success(
           `
-        ${comicToAdd.serie.title} #${comicToAdd.number}
-        ${comicToAdd.title}
+        ${comic.serie.title} #${comic.number}
+        ${comic.title}
         has been added to your cart
       `,
           {
@@ -49,9 +47,52 @@ export const useComicStore = create(
             progress: undefined,
           }
         );
+
+        // set cart to updated cart
+        return { cart: prevCart, comics: prevComics };
       }),
     // remove item from cart and update qty
+    removeComicFromCart: (id) =>
+      set((state) => {
+        // copy the original arrays
+        const prevCart = [...state.cart];
+        const prevComics = [...state.comics];
 
-    // update qty
+        const comic = state.getComic(id)[0];
+
+        // get the item index
+        const comicIndex = state.comics.findIndex((item) => item.id === id);
+
+        // set availability to false
+        prevComics[comicIndex].available = true;
+
+        // add comic to cart
+        const filteredCart = prevCart.filter((currentComic) => {
+          if (currentComic.id !== id) {
+            return currentComic;
+          }
+        });
+
+        // launch toast if all went well
+        toast.success(
+          `
+        ${comic.serie.title} #${comic.number}
+        ${comic.title}
+        has been added to your cart
+      `,
+          {
+            position: 'bottom-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined,
+          }
+        );
+
+        // set cart to updated cart
+        return { cart: filteredCart, comics: prevComics };
+      }),
+    getComic: (id) => get(id).comics.filter((item) => item.id === id),
   }))
 );

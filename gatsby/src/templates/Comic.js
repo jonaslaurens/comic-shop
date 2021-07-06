@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
@@ -9,7 +9,6 @@ import { formatMoney } from '../utils/formatMoney';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useComicStore } from '../store/globalState';
-import { getQuantity } from '../utils/getQuantity';
 
 const SingleComicPageStyles = styled.main`
   width: 100%;
@@ -52,10 +51,12 @@ const ComicInfoStyles = styled.div`
 
 const Comic = ({ data }) => {
   const { id } = data.comic.nodes[0];
+  // const { images, serie, number, title, price, available } =
+  //   data.comic.nodes[0];
 
-  const { comics, addComicToCart } = useComicStore((state) => state);
+  const { getComic, addComicToCart } = useComicStore((state) => state);
 
-  const { images, serie, number, title, price, qty } = getQuantity(comics, id);
+  const { images, serie, number, title, price, available } = getComic(id)[0];
 
   return (
     <Container>
@@ -72,13 +73,12 @@ const Comic = ({ data }) => {
             <br />
             <div className="pricetag">
               <strong>{formatMoney(price)}</strong>
-              <span>{qty} in stock</span>
+              <span>
+                {available ? '1 Available' : 'Currently out of stock'}
+              </span>
             </div>
           </>
-          <button
-            type="button"
-            onClick={() => addComicToCart(data.comic.nodes[0])}
-          >
+          <button type="button" onClick={() => addComicToCart(id)}>
             Add to cart
           </button>
         </ComicInfoStyles>
@@ -107,20 +107,6 @@ export const query = graphql`
     comic: allSanityComic(filter: { id: { eq: $id } }) {
       nodes {
         id
-        number
-        title
-        price
-        slug {
-          current
-        }
-        images {
-          asset {
-            gatsbyImageData
-          }
-        }
-        serie {
-          title
-        }
         _id
       }
     }

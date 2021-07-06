@@ -3,6 +3,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import styled from 'styled-components';
 
 import { CartContext } from '../store/cartStore';
+import { useComicStore } from '../store/globalState';
 
 const CartStyles = styled.div`
   position: relative;
@@ -26,7 +27,7 @@ const CartStyles = styled.div`
 `;
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
+  const cart = useComicStore((state) => state.cart);
 
   if (cart.length === 0) {
     return <FiShoppingCart />;

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { VscClose } from 'react-icons/vsc';
 import { formatMoney } from '../utils/formatMoney';
 import { CartContext } from '../store/cartStore';
+import { useComicStore } from '../store/globalState';
 
 const CartItemStyles = styled.div`
   width: 100%;
@@ -44,7 +45,7 @@ const CloseButtonStyles = styled.button`
 `;
 
 const CartItem = ({ image, title, serie, number, price, id }) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeComicFromCart } = useComicStore((state) => state);
 
   return (
     <CartItemStyles>
@@ -58,7 +59,7 @@ const CartItem = ({ image, title, serie, number, price, id }) => {
         <p>{title}</p>
         <p>{formatMoney(price)}</p>
       </DetailStyles>
-      <CloseButtonStyles onClick={() => removeItem(id)}>
+      <CloseButtonStyles onClick={() => removeComicFromCart(id)}>
         <VscClose />
       </CloseButtonStyles>
     </CartItemStyles>

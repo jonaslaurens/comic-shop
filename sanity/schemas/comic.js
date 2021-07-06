@@ -46,7 +46,16 @@ export default {
       type: 'number',
       description: 'Quantity of the Comic',
       validation: Rule => [
-        Rule.required().error('Please Enter a quantity, selling nothing is cheap')
+        Rule.required().error('Please Enter a quantity, selling nothing is to cheap')
+      ]
+    },
+    {
+      name: 'available',
+      title: 'Available',
+      type: 'boolean',
+      description: 'Mark if comic is available for purchase',
+      validation: Rule => [
+        Rule.required().error('Please mark if you want to sell this comic')
       ]
     },
     {

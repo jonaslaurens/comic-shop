@@ -55,9 +55,9 @@ export const CartProvider: FC = ({ children }) => {
           }
           _id
           price
-          qty
           title
           posted(fromNow: true)
+          available
         }
       }
     }

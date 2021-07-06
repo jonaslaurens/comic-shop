@@ -1,13 +1,16 @@
 import { Link } from 'gatsby';
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 import CartItem from '../components/CartItem';
 import ContactForm from '../components/ContactForm';
 import Container from '../components/Container';
 
-import { CartContext } from '../store/cartStore.tsx';
+import { useComicStore } from '../store/globalState';
 import { calculateTotal } from '../utils/calculateTotal';
 import { formatMoney } from '../utils/formatMoney';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const EmptyCartStyles = styled.div`
   width: 100%;
@@ -55,7 +58,7 @@ const CartDetailsStyles = styled.div`
 `;
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
+  const cart = useComicStore((state) => state.cart);
 
   if (cart.length === 0) {
     return (
@@ -103,6 +106,15 @@ const Cart = () => {
           <ContactForm />
         </CartDetailsStyles>
       </CartContentStyles>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
     </Container>
   );
 };
