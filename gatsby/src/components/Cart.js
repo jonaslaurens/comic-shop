@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import styled from 'styled-components';
-
-import { CartContext } from '../store/cartStore';
 import { useComicStore } from '../store/globalState';
 
 const CartStyles = styled.div`
   position: relative;
+  width: 50px;
 
   span {
     position: absolute;

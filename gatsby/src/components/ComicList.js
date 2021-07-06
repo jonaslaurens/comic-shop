@@ -6,10 +6,11 @@ import Container from './Container';
 
 const SeriesStyles = styled.main`
   width: 100%;
-  min-height: calc(100vh - 66px - 80px);
+  min-height: calc(100vh - 280px);
+  --colums: 2;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: auto;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: auto;
   grid-gap: 3em;
   margin-top: 15px;
   margin-bottom: -15px;

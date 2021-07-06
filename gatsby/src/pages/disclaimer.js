@@ -22,7 +22,8 @@ const disclaimer = () => (
         This is <span>not</span> a webshop!
       </h2>
       <p>
-        You can buy all comics you see on here.. But there is no direct buy
+        You can buy all comics you see on here.. But there is{' '}
+        <strong>no direct buy</strong>
         option. All orders will be handled between the buyer and me directly.
       </p>
 

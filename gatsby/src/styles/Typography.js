@@ -9,6 +9,13 @@ const Typography = createGlobalStyle`
 
   a {
     font-family: 'Bangers';
+    text-decoration: underline;
+    color: var(--black);
+    display: inline-block;
+    transition: all .3s ease-in;
+    font-weight: 400;
+    text-decoration-color: var(--red);
+
     &:hover {
       color: var(--red);
     }
@@ -27,15 +34,13 @@ const Typography = createGlobalStyle`
     letter-spacing: 0.5px;
   }
 
-  h1,h2,h3,h4,h5,h6 {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bangers';
+    color: var(--black);
     font-weight: normal;
     margin: 0;
   }
 
-  h1, h2, h3, h4, h5 {
-    font-family: 'Bangers';
-    color: var(--black);
-  }
 
   h1 {
     font-size: 4rem;
@@ -114,20 +119,14 @@ const Typography = createGlobalStyle`
   p, a, li, strong, span {
     font-size: 1.8em;
     margin: 0;
-    line-height: 4rem;
+    line-height: 4.4rem;
 
     @media (min-width: 440px) {
       font-size: 1.5em;
     }
   }
 
-  a {
-    color: var(--black);
-    text-decoration: none;
-    display: inline-block;
-    transition: all .3s ease-in;
-    font-weight: 400;
-  }
+
 
 
 `;

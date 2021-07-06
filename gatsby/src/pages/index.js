@@ -5,11 +5,15 @@ import Container from '../components/Container';
 
 const LandingStyles = styled.main`
   width: 100%;
-  height: calc(100vh - 66px - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: calc(100vh - 280px);
+
+  @media (min-width: 762px) {
+    min-height: calc(100vh - 66px - 80px);
+  }
 
   a {
     padding: 0;
