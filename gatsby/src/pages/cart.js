@@ -11,6 +11,11 @@ import { calculateTotal } from '../utils/calculateTotal';
 import { formatMoney } from '../utils/formatMoney';
 
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  CartContentStyles,
+  CartDetailsStyles,
+  CartItemsStyles,
+} from '../styles/CartStyles';
 
 const EmptyCartStyles = styled.div`
   width: 100%;
@@ -23,37 +28,6 @@ const EmptyCartStyles = styled.div`
 
   a {
     font-size: inherit;
-  }
-`;
-
-const CartContentStyles = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2em;
-  padding-top: 30px;
-`;
-
-const CartItemsStyles = styled.div`
-  width: 100%;
-  max-height: 750px;
-  overflow: hidden scroll;
-`;
-
-const CartDetailsStyles = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  p {
-    padding: 0.4em 0;
-  }
-
-  strong {
-    font-size: 1em;
-  }
-
-  form {
-    margin-top: 50px;
   }
 `;
 
@@ -80,15 +54,18 @@ const Cart = () => {
       <CartContentStyles>
         <CartItemsStyles>
           {cart.map((item, index) => (
-            <CartItem
-              key={`${item.id}${index}`}
-              title={item.title}
-              image={item.images[0]}
-              serie={item.serie}
-              number={item.number}
-              price={item.price}
-              id={item.id}
-            />
+            <>
+              <CartItem
+                key={`${item.id}${index}`}
+                title={item.title}
+                image={item.images[0]}
+                serie={item.serie}
+                number={item.number}
+                price={item.price}
+                id={item.id}
+              />
+              <hr />
+            </>
           ))}
         </CartItemsStyles>
         <CartDetailsStyles>

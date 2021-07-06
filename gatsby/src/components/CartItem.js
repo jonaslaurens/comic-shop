@@ -1,9 +1,8 @@
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { VscClose } from 'react-icons/vsc';
 import { formatMoney } from '../utils/formatMoney';
-import { CartContext } from '../store/cartStore';
 import { useComicStore } from '../store/globalState';
 
 const CartItemStyles = styled.div`

@@ -19,6 +19,8 @@ const useContact = ({ values, resetValues }) => {
       order: orderedComics,
     };
 
+    // TODO: when an order is beign made update the availibility value on the backend
+
     // update comics quantity on server
     const responseQtyMutation = await fetch(
       `${process.env.GATSBY_SERVERLESS_BASE}/updateQty`,
