@@ -9,6 +9,10 @@ module.exports = {
     twitter: '@jonaslaurens',
     author: 'Jonas Laurens',
   },
+  flags: {
+    FAST_DEV: true,
+    DEV_SSR: true,
+  },
   plugins: [
     {
       resolve: 'gatsby-source-sanity',

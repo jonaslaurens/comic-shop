@@ -7,13 +7,25 @@ import Container from '../components/Container';
 const SeriesStyles = styled.main`
   width: 100%;
   min-height: calc(100vh - 280px);
-  --colums: 2;
+  --columns: 2;
+  grid-template-columns: repeat(var(--columns), 1fr);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
   grid-gap: 3em;
   margin-top: 15px;
   margin-bottom: -15px;
+
+  @media (min-width: 600px) {
+    --columns: 3;
+  }
+
+  @media (min-width: 960px) {
+    --columns: 4;
+  }
+
+  @media (min-width: 1500px) {
+    --columns: 5;
+  }
 `;
 
 const SingleComicStyles = styled.div`
@@ -58,7 +70,10 @@ export default series;
 
 export const query = graphql`
   query ($id: String!) {
-    comics: allSanityComic(filter: { serie: { id: { eq: $id } } }) {
+    comics: allSanityComic(
+      sort: { fields: number }
+      filter: { serie: { id: { eq: $id } } }
+    ) {
       nodes {
         id
         number
