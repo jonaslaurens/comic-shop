@@ -2,6 +2,7 @@ import { graphql, Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { motion } from 'framer-motion';
 import Container from '../components/Container';
 
 const SeriesStyles = styled.main`
@@ -52,13 +53,15 @@ const series = ({
       <SeriesStyles>
         {allComics.map((comic) => (
           <Link key={comic.id} to={`/comic/${comic.slug.current}`}>
-            <SingleComicStyles>
-              <GatsbyImage
-                image={getImage(comic.images[0].asset)}
-                alt="hello"
-              />
-              <p>#{comic.number}</p>
-            </SingleComicStyles>
+            <motion.div whileHover={{ scale: 1.2 }}>
+              <SingleComicStyles>
+                <GatsbyImage
+                  image={getImage(comic.images[0].asset)}
+                  alt="hello"
+                />
+                <p>#{comic.number}</p>
+              </SingleComicStyles>
+            </motion.div>
           </Link>
         ))}
       </SeriesStyles>

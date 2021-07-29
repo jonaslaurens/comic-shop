@@ -1,9 +1,10 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
 const FooterStyles = styled.footer`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   padding: 15px 0;
@@ -25,6 +26,7 @@ const Footer = () => (
     <a href="https://jolau.be/" rel="noopener noreferrer" target="_blank">
       JoLau &copy; {new Date().getFullYear()}{' '}
     </a>
+    <Link to="/disclaimer">Disclaimer and Terms</Link>
   </FooterStyles>
 );
 

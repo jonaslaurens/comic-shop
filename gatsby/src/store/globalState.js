@@ -16,6 +16,8 @@ export const useComicStore = create(
       set((state) => {
         // copy the original arrays
         const prevCart = [...state.cart];
+
+        // copy comics
         const prevComics = [...state.comics];
 
         const comic = state.getComic(id)[0];
@@ -23,7 +25,17 @@ export const useComicStore = create(
         // get the item index
         const index = state.comics.findIndex((item) => item.id === id);
 
-        // copy comics
+        if (!comic.available) {
+          toast.error(`This comic is no longer available`, {
+            position: 'bottom-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined,
+          });
+          return;
+        }
 
         // set availability to false
         prevComics[index].available = false;

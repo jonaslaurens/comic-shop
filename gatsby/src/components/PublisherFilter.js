@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const PublishersStyles = styled.main`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   a {
     font-size: 2.8rem;

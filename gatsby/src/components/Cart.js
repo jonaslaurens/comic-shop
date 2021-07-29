@@ -16,8 +16,8 @@ const CartStyles = styled.div`
     height: 8px;
     padding: 8px;
     font-size: 0.5em;
-    top: -10px;
-    right: -20px;
+    top: -5px;
+    right: -5px;
     display: flex;
     flex-direction: column;
     justify-content: center;

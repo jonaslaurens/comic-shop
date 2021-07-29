@@ -116,7 +116,7 @@ const Typography = createGlobalStyle`
     }
   }
 
-  p, a, li, strong, span {
+  p, a, li, span {
     font-size: 1.8em;
     margin: 0;
     line-height: 4.4rem;
