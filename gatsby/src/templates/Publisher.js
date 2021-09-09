@@ -44,7 +44,10 @@ export default Publisher;
 
 export const query = graphql`
   query ($id: String!) {
-    series: allSanitySerie(filter: { publisher: { id: { eq: $id } } }) {
+    series: allSanitySerie(
+      sort: { fields: title, order: ASC }
+      filter: { publisher: { id: { eq: $id } } }
+    ) {
       nodes {
         slug {
           current

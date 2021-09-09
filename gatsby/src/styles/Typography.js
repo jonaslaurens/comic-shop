@@ -122,7 +122,7 @@ const Typography = createGlobalStyle`
     line-height: 4.4rem;
 
     @media (min-width: 440px) {
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
   }
 

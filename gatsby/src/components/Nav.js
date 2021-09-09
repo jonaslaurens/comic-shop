@@ -46,7 +46,7 @@ const Nav = () => (
       <Cart />
     </Link>
     <a
-      href="/comicgradingforeveryone"
+      href="https://comic-grading-for-everyone.netlify.app/"
       rel="noopener noreferrer"
       target="_blank"
     >

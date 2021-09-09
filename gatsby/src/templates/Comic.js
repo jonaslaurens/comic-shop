@@ -51,8 +51,6 @@ const ComicInfoStyles = styled.div`
 
 const Comic = ({ data }) => {
   const { id } = data.comic.nodes[0];
-  // const { images, serie, number, title, price, available } =
-  //   data.comic.nodes[0];
 
   const { getComic, addComicToCart } = useComicStore((state) => state);
 

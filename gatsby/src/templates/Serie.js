@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, navigate } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
@@ -41,6 +41,15 @@ const SingleComicStyles = styled.div`
   }
 `;
 
+const NoMoreComicStyles = styled.div`
+  width: 100%;
+  height: calc(100vh - 66px - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const series = ({
   data: {
     comics: { nodes },
@@ -48,22 +57,37 @@ const series = ({
 }) => {
   const allComics = nodes;
 
+  if (allComics.length === 0)
+    return (
+      <NoMoreComicStyles>
+        <p>No More Comics for this Serie</p>
+        <button type="button" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
+      </NoMoreComicStyles>
+    );
+
   return (
     <Container>
       <SeriesStyles>
-        {allComics.map((comic) => (
-          <Link key={comic.id} to={`/comic/${comic.slug.current}`}>
-            <motion.div whileHover={{ scale: 1.2 }}>
-              <SingleComicStyles>
-                <GatsbyImage
-                  image={getImage(comic.images[0].asset)}
-                  alt="hello"
-                />
-                <p>#{comic.number}</p>
-              </SingleComicStyles>
-            </motion.div>
-          </Link>
-        ))}
+        {allComics.map((comic) => {
+          if (comic.available) {
+            return (
+              <Link key={comic.id} to={`/comic/${comic.slug.current}`}>
+                <motion.div whileHover={{ scale: 1.2 }}>
+                  <SingleComicStyles>
+                    <GatsbyImage
+                      image={getImage(comic.images[0].asset)}
+                      alt="hello"
+                    />
+                    {console.log(allComics)}
+                    <p>#{comic.number}</p>
+                  </SingleComicStyles>
+                </motion.div>
+              </Link>
+            );
+          }
+        })}
       </SeriesStyles>
     </Container>
   );
@@ -82,6 +106,7 @@ export const query = graphql`
         number
         title
         price
+        available
         slug {
           current
         }

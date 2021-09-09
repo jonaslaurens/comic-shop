@@ -25,7 +25,7 @@ const disclaimer = () => (
       <p>
         Just a fair warning.. You can buy all comics you see on here.. But there
         is <strong>no direct buy</strong> option. All orders are processed
-        between the buyer and myself.
+        between the buyer and HallofJusticeComicShop.com.
       </p>
 
       <hr />
@@ -33,15 +33,15 @@ const disclaimer = () => (
       <h3>Example buying process</h3>
       <p>
         You found a comic you like and added it to your cart. After filling out
-        the form, I will recieve your order and will review it. Soon, after
-        reviewing your order, You will recieve an email where I answer any
+        the form, we will recieve your order and will review it. Soon, after
+        reviewing your order, You will recieve an email where we answer any
         questions you might have asked and possibly getting some questions from
-        myself, like the necessary details where I need to send your order to.
+        us, like the necessary details where we need to send your order to.
       </p>
       <p>
         When we reach an agreement about your order and we both feel comfortable
         about the process, you will be asked to send out the payment. As soon as
-        the payment is recieved I will send out your order, few days later, you
+        the payment is recieved we will send out your order, few days later, you
         will be the happy new owner of that one or more missing comics!
       </p>
 
@@ -49,10 +49,15 @@ const disclaimer = () => (
 
       <h3>Shipping Your comic</h3>
       <p>
-        I send out all comics with the best care I can give them. Bag and board,
-        bigger piece of carboard around comic and bubble wrap around that to
+        We send out all comics with the best care we can provide. Bag and board,
+        bigger piece of carboard around the comic and bubble wrap around that to
         protect it even further. Depending on the amount, it will either be send
         in a mailer or a sturdy box.
+      </p>
+
+      <p>
+        We are collectors ourself. The comic you buy will be treated as if it
+        were still our own.
       </p>
 
       <hr />
@@ -60,11 +65,17 @@ const disclaimer = () => (
       <h3>Ownership</h3>
       <p>
         All comics and characters have their own copyright through their
-        "maker". HallofJusticeComicShop.com is just a website to sell my
+        "creator". HallofJusticeComicShop.com is just a platform to sell A
         personal collection. All HallofJusticeComicShop.com claims to own is
         this website, the look and feel, and the individual functions that make
         your comic shopping experience a more enjoyable one.
       </p>
+
+      <hr />
+
+      <h3>Return Policy</h3>
+
+      <p>More to come</p>
 
       <hr />
 
@@ -75,12 +86,15 @@ const disclaimer = () => (
         distribute your information.
       </p>
       <p>
-        All personal data will only be transferred between the buyer and me.
-        Personal data you send will never be stored or used for other purposes.
+        All personal data will only be transferred between the buyer and
+        HallofJusticeComicShop.com. Personal data you send will never be stored
+        or used for other purposes other then communication between you and
+        HallofJusticeComicShop.com.
       </p>
       <p>
-        Once the transaction is complete I'll erase all data send by the buyer.
-        I have no interest in knowing where my comics went or who owns it.
+        Once the transaction is complete we'll erase all data send by the buyer.
+        We have no further interest in knowing where the comics went or who owns
+        them.
       </p>
     </DisclaimerStyles>
   </Container>

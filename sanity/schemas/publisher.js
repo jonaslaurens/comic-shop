@@ -12,7 +12,19 @@ export default {
       title: 'Publisher name',
       type: 'string',
       description: 'The name of the Publisher',
-    }
+    },
+    {
+      name: 'logo',
+      title: 'Publisher Logo',
+      type: 'image',
+      description: 'Logo of the Publisher',
+    },
+    {
+      name: 'logoAlt',
+      title: 'Publisher Logo Alt Text',
+      type: 'string',
+      description: 'Alt text for the logo',
+    },
   ],
 
 };

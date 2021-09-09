@@ -66,6 +66,13 @@ export default {
       of: [{ type: 'image' }],
     },
     {
+      name: 'imageAlt',
+      title: 'Comic image alt Text',
+      type: 'array',
+      description: 'Alt text for the images',
+      of: [{type: 'string'}]
+    },
+    {
       name: 'posted',
       title: 'Posted on',
       type: 'datetime',

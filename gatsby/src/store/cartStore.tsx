@@ -36,7 +36,12 @@ export const CartProvider: FC = ({ children }) => {
 
   const data = useStaticQuery(graphql`
     query {
-      comics: allSanityComic {
+      comics: allSanityComic(
+        sort: {
+          order: [ASC, ASC, ASC]
+          fields: [serie___publisher___name, serie___title, number]
+        }
+      ) {
         nodes {
           id
           images {
@@ -49,6 +54,11 @@ export const CartProvider: FC = ({ children }) => {
             publisher {
               id
               name
+              logo {
+                asset {
+                  gatsbyImageData
+                }
+              }
             }
             id
             title
