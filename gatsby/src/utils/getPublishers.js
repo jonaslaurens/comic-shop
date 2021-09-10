@@ -1,8 +1,6 @@
 export const getPublishers = (data) => {
   const publishers = [];
 
-  console.log(data);
-
   data.forEach((item) => {
     publishers.push(item.serie.publisher);
   });

@@ -54,6 +54,7 @@ export const CartProvider: FC = ({ children }) => {
             publisher {
               id
               name
+              logoAlt
               logo {
                 asset {
                   gatsbyImageData

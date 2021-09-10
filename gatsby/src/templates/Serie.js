@@ -78,9 +78,8 @@ const series = ({
                   <SingleComicStyles>
                     <GatsbyImage
                       image={getImage(comic.images[0].asset)}
-                      alt="hello"
+                      alt={comic.imageAlt[0]}
                     />
-                    {console.log(allComics)}
                     <p>#{comic.number}</p>
                   </SingleComicStyles>
                 </motion.div>
@@ -115,6 +114,7 @@ export const query = graphql`
             gatsbyImageData
           }
         }
+        imageAlt
         serie {
           title
         }
