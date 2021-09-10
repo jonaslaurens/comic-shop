@@ -6,9 +6,26 @@ export const useComicStore = create(
   devtools((set, get) => ({
     comics: [],
     cart: [],
+    series: [],
     initComics: (DBComics) =>
       set((state) => {
         state.comics = DBComics;
+
+        const serieList = DBComics.map((comic) => ({
+          title: comic.serie.title,
+          slug: comic.serie.slug,
+        }));
+
+        const keys = ['title', 'slug'];
+
+        const filtered = serieList.filter(
+          (
+            (s) => (o) =>
+              ((k) => !s.has(k) && s.add(k))(keys.map((k) => o[k]).join('|'))
+          )(new Set())
+        );
+
+        state.series = filtered;
       }),
 
     // add item to cart and update qty

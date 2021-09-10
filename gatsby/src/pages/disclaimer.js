@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
+import SEO from '../components/SEO';
 
 const DisclaimerStyles = styled.main`
   span {
@@ -14,8 +15,9 @@ const DisclaimerStyles = styled.main`
   }
 `;
 
-const disclaimer = () => (
+const disclaimer = ({ location }) => (
   <Container>
+    <SEO title="Disclaimer" location={location} />
     <DisclaimerStyles>
       <h1>Disclaimer and Terms</h1>
       <h2>

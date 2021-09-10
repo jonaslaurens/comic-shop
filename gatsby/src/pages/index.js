@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
+import Seo from '../components/SEO';
 
 const LandingStyles = styled.main`
   width: 100%;
@@ -20,8 +21,9 @@ const LandingStyles = styled.main`
   }
 `;
 
-const IndexPage = () => (
+const IndexPage = ({ location }) => (
   <Container>
+    <Seo title="Home" location={location} />
     <LandingStyles>
       <h1>Welcome to the Hall of Justice Comic Shop!</h1>
       <p>

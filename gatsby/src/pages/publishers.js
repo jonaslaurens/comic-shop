@@ -4,14 +4,16 @@ import Container from '../components/Container';
 import { getPublishers } from '../utils/getPublishers';
 import PublisherFilter from '../components/PublisherFilter';
 import { useComicStore } from '../store/globalState';
+import SEO from '../components/SEO';
 
-const Publishers = () => {
+const Publishers = ({ location }) => {
   const comics = useComicStore((state) => state.comics);
 
   const publishers = getPublishers(comics);
 
   return (
     <Container>
+      <SEO title="Publishers" location={location} />
       <PublisherFilter publishers={publishers} />
     </Container>
   );

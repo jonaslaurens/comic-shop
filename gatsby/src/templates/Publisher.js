@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Container from '../components/Container';
+import SEO from '../components/SEO';
 
 const PublishersStyles = styled.main`
   width: 100%;
@@ -24,8 +25,10 @@ const Publisher = ({
   data: {
     series: { nodes },
   },
+  location,
 }) => (
   <Container>
+    <SEO title="Publisher" location={location} />
     <PublishersStyles>
       {nodes.map((serie) => (
         <Link key={serie.id} to={`/series/${serie.slug.current}`}>

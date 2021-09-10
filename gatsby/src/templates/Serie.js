@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
 import Container from '../components/Container';
+import SEO from '../components/SEO';
 
 const SeriesStyles = styled.main`
   width: 100%;
@@ -54,6 +55,7 @@ const series = ({
   data: {
     comics: { nodes },
   },
+  location,
 }) => {
   const allComics = nodes;
 
@@ -69,10 +71,11 @@ const series = ({
 
   return (
     <Container>
+      <SEO title={allComics[0].serie.title} location={location} />
       <SeriesStyles>
-        {allComics.map((comic) => {
-          if (comic.available) {
-            return (
+        {allComics.map(
+          (comic) =>
+            comic.available && (
               <Link key={comic.id} to={`/comic/${comic.slug.current}`}>
                 <motion.div whileHover={{ scale: 1.2 }}>
                   <SingleComicStyles>
@@ -84,9 +87,8 @@ const series = ({
                   </SingleComicStyles>
                 </motion.div>
               </Link>
-            );
-          }
-        })}
+            )
+        )}
       </SeriesStyles>
     </Container>
   );

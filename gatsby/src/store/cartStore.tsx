@@ -63,6 +63,9 @@ export const CartProvider: FC = ({ children }) => {
             }
             id
             title
+            slug {
+              current
+            }
           }
           _id
           price

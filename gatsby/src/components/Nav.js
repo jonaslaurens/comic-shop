@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { GrSearch } from 'react-icons/gr';
 import Cart from './Cart';
 
 const NavStyles = styled.nav`
@@ -42,6 +43,7 @@ const Nav = () => (
   <NavStyles>
     <Link to="/">Home</Link>
     <Link to="/publishers">Publishers</Link>
+    <Link to="/search">Search</Link>
     <Link to="/cart">
       <Cart />
     </Link>

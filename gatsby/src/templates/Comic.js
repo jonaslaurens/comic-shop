@@ -9,6 +9,7 @@ import { formatMoney } from '../utils/formatMoney';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useComicStore } from '../store/globalState';
+import SEO from '../components/SEO';
 
 const SingleComicPageStyles = styled.main`
   width: 100%;
@@ -49,7 +50,7 @@ const ComicInfoStyles = styled.div`
   }
 `;
 
-const Comic = ({ data }) => {
+const Comic = ({ data, location }) => {
   const { id } = data.comic.nodes[0];
 
   const { getComic, addComicToCart } = useComicStore((state) => state);
@@ -58,6 +59,7 @@ const Comic = ({ data }) => {
 
   return (
     <Container>
+      <SEO title={title} location={location} />
       <SingleComicPageStyles>
         <ImageStyles>
           <GatsbyImage image={getImage(images[0].asset)} alt="hello" />
