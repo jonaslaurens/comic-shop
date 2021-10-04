@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 
-const SEO = ({ location, description, title, image }) => {
+interface Props {
+  location: any;
+  description: string;
+  title: string;
+  image: string;
+}
+
+interface ISEO {
+  title: string;
+  description: string;
+  url: string;
+}
+
+const SEO: FC<Props> = ({ location, description, title, image }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -28,7 +40,7 @@ const SEO = ({ location, description, title, image }) => {
     defaultIcon,
   } = site.siteMetadata;
 
-  const seo = {
+  const seo: ISEO = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     url: `${siteUrl}${location.pathname}`,
@@ -39,7 +51,7 @@ const SEO = ({ location, description, title, image }) => {
       <html lang="en" />
       <meta name="description" content={seo.description} />
 
-      {seo.siteUrl && <meta property="og:url" content={seo.url} />}
+      {seo.url && <meta property="og:url" content={seo.url} />}
 
       <link rel="icon" type="image/svg+xml " href="/favicon.svg" />
       <link rel="alternate icon" href="/favicon.ico" />
@@ -75,12 +87,6 @@ const SEO = ({ location, description, title, image }) => {
       <meta property="twitter:image" content={image || defaultIcon} />
     </Helmet>
   );
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string,
 };
 
 export default SEO;

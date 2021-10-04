@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -59,7 +60,7 @@ const Comic = ({ data, location }) => {
 
   return (
     <Container>
-      <SEO title={title} location={location} />
+      <SEO title={title} location={location} description="" image="" />
       <SingleComicPageStyles>
         <ImageStyles>
           <GatsbyImage image={getImage(images[0].asset)} alt="hello" />

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { graphql, Link, navigate } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -71,7 +72,12 @@ const series = ({
 
   return (
     <Container>
-      <SEO title={allComics[0].serie.title} location={location} />
+      <SEO
+        title={allComics[0].serie.title}
+        location={location}
+        description=""
+        image=""
+      />
       <SeriesStyles>
         {allComics.map(
           (comic) =>

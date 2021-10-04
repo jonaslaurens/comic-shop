@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FaPaperPlane } from 'react-icons/fa';
 import useContact from '../utils/useContact';
 import useForm from '../utils/useForm';
-import { CartContext } from '../store/cartStore.tsx';
+import { useComicStore } from '../store/globalState';
 
 const FormStyles = styled.form`
   display: grid;
@@ -63,9 +63,13 @@ const ContactForm = () => {
     siroop: '',
   });
 
-  const { cart } = useContext(CartContext);
+  const { cart, resetCart } = useComicStore((state) => state);
 
-  const { submitContact, loading } = useContact({ values, resetValues });
+  const { submitContact, loading } = useContact({
+    values,
+    resetValues,
+    resetCart,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

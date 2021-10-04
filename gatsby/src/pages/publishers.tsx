@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import Container from '../components/Container';
 
@@ -13,7 +14,7 @@ const Publishers = ({ location }) => {
 
   return (
     <Container>
-      <SEO title="Publishers" location={location} />
+      <SEO title="Publishers" location={location} description="" image="" />
       <PublisherFilter publishers={publishers} />
     </Container>
   );

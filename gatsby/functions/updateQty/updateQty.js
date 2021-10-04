@@ -44,16 +44,4 @@ exports.handler = async (event) => {
       msg: 'Update failed',
     }),
   };
-
-  /* client
-    .patch(id) // Document ID to patch
-    .dec({ qty: 1 })
-    .commit() // Perform the patch and return a promise
-    .then((updatedComic) => {
-      console.log('Hurray, the comic is updated! New document:');
-      console.log(updatedComic);
-    })
-    .catch((err) => {
-      console.error('Oh no, the update failed: ', err.message);
-    }); */
 };

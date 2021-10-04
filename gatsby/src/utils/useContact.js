@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { createOrder } from './createOrder';
 
-const useContact = ({ values, resetValues }) => {
+const useContact = ({ values, resetValues, resetCart }) => {
   const [loading, setLoading] = useState(false);
 
   const submitContact = async (cart) => {
@@ -71,6 +71,7 @@ const useContact = ({ values, resetValues }) => {
         progress: undefined,
       });
       resetValues({ name: '', email: '', message: '', siroop: '' });
+      resetCart();
     }
   };
 

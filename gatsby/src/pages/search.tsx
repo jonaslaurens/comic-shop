@@ -1,8 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
-import Seo from '../components/SEO';
+import SEO from '../components/SEO';
 import { useComicStore } from '../store/globalState';
 
 const SearchStyles = styled.main`
@@ -43,7 +44,7 @@ const SearchPage = ({ location }) => {
 
   return (
     <Container>
-      <Seo title="Search" location={location} />
+      <SEO title="Search" location={location} description="" image="" />
       <SearchStyles>
         <h1>Search</h1>
         <input

@@ -1,5 +1,8 @@
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 const dotenv = require('dotenv');
-const nodemailer = require('nodemailer');
 
 dotenv.config({ path: '.env' });
 
@@ -37,19 +40,6 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // setup connection
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      type: 'OAuth2',
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_USER_PASSWORD,
-      clientId: process.env.GMAIL_OAUTH_ID,
-      clientSecret: process.env.GMAIL_OAUTH_SECRET,
-      refreshToken: process.env.GMAIL_OAUTH_REFRESHTOKEN,
-    },
-  });
-
   const mailContent = `
     <p>${body.name} contacted with the following message</p>
       <p>${body.message}</p>
@@ -73,35 +63,34 @@ exports.handler = async (event, context) => {
             )
             .join('')}
         </tbody>
-      </table>`;
+      </table>
+      </hr >
+      <p>Email: ${body.email}</p>
+      `;
 
-  // setup mail
-  const mailOptions = {
-    from: body.name,
-    to: process.env.GMAIL_RECEPIENT,
-    subject: 'Hall of Justice Order',
-    generateTextFromHTML: true,
+  // Create email
+  const msg = {
+    to: process.env.SENDGRID_USER, // Change to your recipient
+    from: process.env.SENDGRID_USER, // Change to your verified sender
+    subject: 'Order placed',
     html: mailContent,
   };
 
-  // send mail
-
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      return {
-        statusCode: error.code,
-        body: JSON.stringify({
-          msg: error.message,
-        }),
-      };
-    }
-    console.log(`Email sent: ${info.response}`);
+  // Sending the message
+  try {
+    await sgMail.send(msg);
     return {
       statusCode: 200,
       body: JSON.stringify({
         msg: 'Success',
       }),
     };
-  });
+  } catch (error) {
+    return {
+      statusCode: error.code,
+      body: JSON.stringify({
+        msg: error.message,
+      }),
+    };
+  }
 };

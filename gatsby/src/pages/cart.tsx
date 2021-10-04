@@ -1,8 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
-import CartItem from '../components/CartItem';
+import CartItem from '../components/CartItem/CartItem';
 import ContactForm from '../components/ContactForm';
 import Container from '../components/Container';
 
@@ -15,32 +16,15 @@ import {
   CartContentStyles,
   CartDetailsStyles,
   CartItemsStyles,
+  EmptyCartStyles,
 } from '../styles/CartStyles';
-
-const EmptyCartStyles = styled.div`
-  width: 100%;
-  height: calc(100vh - 280px);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media (min-width: 762px) {
-    min-height: calc(100vh - 66px - 80px);
-  }
-
-  a {
-    font-size: inherit;
-  }
-`;
 
 const Cart = () => {
   const cart = useComicStore((state) => state.cart);
 
-  if (cart.length === 0) {
-    return (
-      <Container>
+  return (
+    <Container>
+      {cart.length === 0 && (
         <EmptyCartStyles>
           <h2>
             No items here, go and get{' '}
@@ -49,16 +33,12 @@ const Cart = () => {
             </Link>
           </h2>
         </EmptyCartStyles>
-      </Container>
-    );
-  }
+      )}
 
-  return (
-    <Container>
       <CartContentStyles>
         <CartItemsStyles>
           {cart.map((item, index) => (
-            <>
+            <React.Fragment key={item.id}>
               <CartItem
                 key={`${item.id}${index}`}
                 title={item.title}
@@ -69,7 +49,7 @@ const Cart = () => {
                 id={item.id}
               />
               <hr />
-            </>
+            </React.Fragment>
           ))}
         </CartItemsStyles>
         <CartDetailsStyles>

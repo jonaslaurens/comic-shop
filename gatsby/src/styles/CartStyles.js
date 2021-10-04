@@ -35,4 +35,27 @@ const CartDetailsStyles = styled.div`
   }
 `;
 
-export { CartContentStyles, CartItemsStyles, CartDetailsStyles };
+const EmptyCartStyles = styled.div`
+  width: 100%;
+  height: calc(100vh - 280px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 762px) {
+    min-height: calc(100vh - 66px - 80px);
+  }
+
+  a {
+    font-size: inherit;
+  }
+`;
+
+export {
+  CartContentStyles,
+  CartItemsStyles,
+  CartDetailsStyles,
+  EmptyCartStyles,
+};

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
@@ -17,7 +18,12 @@ const DisclaimerStyles = styled.main`
 
 const disclaimer = ({ location }) => (
   <Container>
-    <SEO title="Disclaimer" location={location} />
+    <SEO
+      title="Disclaimer"
+      location={location}
+      description="Disclaimer about the use of the website"
+      image=""
+    />
     <DisclaimerStyles>
       <h1>Disclaimer and Terms</h1>
       <h2>

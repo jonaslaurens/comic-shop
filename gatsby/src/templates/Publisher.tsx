@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -28,7 +29,7 @@ const Publisher = ({
   location,
 }) => (
   <Container>
-    <SEO title="Publisher" location={location} />
+    <SEO title="Publisher" location={location} description="" image="" />
     <PublishersStyles>
       {nodes.map((serie) => (
         <Link key={serie.id} to={`/series/${serie.slug.current}`}>

@@ -1,21 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { createContext, useState, FC, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { IComic } from '../types';
 import { useComicStore } from './globalState';
-
-interface ISerie {
-  title: String;
-}
-
-interface IComic {
-  id: string;
-  _id: string;
-  title: string;
-  number: number;
-  serie: {
-    [key: string]: ISerie;
-  };
-}
 
 type ContextType = {
   cart: IComic[];

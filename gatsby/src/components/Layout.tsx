@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable import/no-unresolved */
+import React, { FC } from 'react';
 import GlobalStyles from '../styles/GlobalStyles';
 import Nav from './Nav';
 import Typography from '../styles/Typography';
 import Footer from './Footer';
+import { LayoutProps } from '../types';
 
-const Layout = ({ children }) => (
+const Layout: FC<LayoutProps> = ({ children }) => (
   <>
     <GlobalStyles />
     <Typography />
@@ -14,12 +15,5 @@ const Layout = ({ children }) => (
     <Footer />
   </>
 );
-
-Layout.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-};
 
 export default Layout;

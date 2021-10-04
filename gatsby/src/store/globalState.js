@@ -103,11 +103,11 @@ export const useComicStore = create(
         });
 
         // launch toast if all went well
-        toast.success(
+        toast.error(
           `
         ${comic.serie.title} #${comic.number}
         ${comic.title}
-        has been added to your cart
+        has been removed from your cart
       `,
           {
             position: 'bottom-center',
@@ -123,5 +123,10 @@ export const useComicStore = create(
         return { cart: filteredCart, comics: prevComics };
       }),
     getComic: (id) => get(id).comics.filter((item) => item.id === id),
+    resetCart: () =>
+      set((state) =>
+        // revert to empty cart
+        ({ cart: [] })
+      ),
   }))
 );

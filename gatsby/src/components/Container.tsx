@@ -1,6 +1,7 @@
-import React from 'react';
+/* eslint-disable import/no-unresolved */
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { LayoutProps } from '../types';
 
 const ContainerStyles = styled.div`
   max-width: 100%;
@@ -17,15 +18,8 @@ const ContainerStyles = styled.div`
   }
 `;
 
-const Container = ({ children }) => (
+const Container: FC<LayoutProps> = ({ children }) => (
   <ContainerStyles>{children}</ContainerStyles>
 );
-
-Container.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-};
 
 export default Container;
