@@ -16,6 +16,17 @@ interface IComic {
   serie: {
     [key: string]: ISerie;
   };
+  available: boolean;
 }
 
-export { LayoutProps, IComic, ISerie };
+interface ComicStoreState {
+  comics: IComic[];
+  cart: IComic[];
+  series: ISerie[];
+  getComic: (id: string) => void;
+  addComicToCart: (id: string) => void;
+  removeComicFromCart: (id: string) => void;
+  resetCart: () => void;
+}
+
+export { LayoutProps, IComic, ISerie, ComicStoreState };

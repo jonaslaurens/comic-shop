@@ -1,8 +1,10 @@
+/* eslint-disable import/no-unresolved */
 import { toast } from 'react-toastify';
 import create from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { ComicStoreState } from '../types';
 
-export const useComicStore = create(
+export const useComicStore = create<ComicStoreState>(
   devtools((set, get) => ({
     comics: [],
     cart: [],
@@ -97,9 +99,10 @@ export const useComicStore = create(
 
         // add comic to cart
         const filteredCart = prevCart.filter((currentComic) => {
-          if (currentComic.id !== id) {
-            return currentComic;
+          if (currentComic.id === id) {
+            return;
           }
+          return currentComic;
         });
 
         // launch toast if all went well
@@ -124,7 +127,7 @@ export const useComicStore = create(
       }),
     getComic: (id) => get(id).comics.filter((item) => item.id === id),
     resetCart: () =>
-      set((state) =>
+      set(() =>
         // revert to empty cart
         ({ cart: [] })
       ),
