@@ -10,7 +10,7 @@ const PublisherFilter = ({ publishers }) => (
   <PublishersStyles>
     {publishers.map((publisher) => (
       <Link key={publisher.id} to={`/publisher/${publisher.name}`}>
-        <SinglePublisherStyles whileHover={{ scale: 1.2 }}>
+        <SinglePublisherStyles whileHover={{ scale: 1.05 }}>
           <GatsbyImage
             image={getImage(publisher.logo.asset)}
             alt={publisher.logoAlt}

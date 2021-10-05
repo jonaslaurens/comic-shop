@@ -29,6 +29,10 @@ const SinglePublisherStyles = styled(motion.div)`
   align-items: center;
   width: 100%;
 
+  @media (min-width: 800px) {
+    flex-direction: column;
+  }
+
   img {
     max-width: 150px !important;
   }
@@ -37,6 +41,10 @@ const SinglePublisherStyles = styled(motion.div)`
     width: 50%;
     text-align: center;
     padding: 15px 0;
+
+    @media (min-width: 800px) {
+      width: 100%;
+    }
   }
 `;
 

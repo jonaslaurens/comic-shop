@@ -2,7 +2,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Container from '../components/Container';
+import Container from '../components/Container/Container';
 import SEO from '../components/SEO';
 
 const LandingStyles = styled.main`

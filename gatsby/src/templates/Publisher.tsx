@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Container from '../components/Container';
+import Container from '../components/Container/Container';
 import SEO from '../components/SEO';
 
 const PublishersStyles = styled.main`

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
-import Container from '../components/Container';
+import Container from '../components/Container/Container';
 import { formatMoney } from '../utils/formatMoney';
 
 import 'react-toastify/dist/ReactToastify.css';

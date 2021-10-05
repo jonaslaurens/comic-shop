@@ -2,7 +2,7 @@
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Container from '../components/Container';
+import Container from '../components/Container/Container';
 import SEO from '../components/SEO';
 import { useComicStore } from '../store/globalState';
 
@@ -72,20 +72,3 @@ const SearchPage = ({ location }) => {
   );
 };
 export default SearchPage;
-
-/*
-
-
- { if(foundComics.length > 0) {
-           return (
-             foundComics.map((serie) => <p>{serie}</p>)
-           )
-
-        } else if(searchValue === '') {
-            return (
-              <p>Serie Not Found</p>
-            )
-          }
-        }
-
-        */

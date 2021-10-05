@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { motion } from 'framer-motion';
-import Container from '../components/Container';
+import Container from '../components/Container/Container';
 import SEO from '../components/SEO';
 
 const SeriesStyles = styled.main`

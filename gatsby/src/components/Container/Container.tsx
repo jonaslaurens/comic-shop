@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { LayoutProps } from '../types';
+import { LayoutProps } from '../../types';
 
 const ContainerStyles = styled.div`
   max-width: 100%;

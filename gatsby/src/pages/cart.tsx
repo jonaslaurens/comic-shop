@@ -1,11 +1,8 @@
 /* eslint-disable import/no-unresolved */
 import { Link } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import CartItem from '../components/CartItem/CartItem';
-import ContactForm from '../components/ContactForm';
-import Container from '../components/Container';
 
 import { useComicStore } from '../store/globalState';
 import { calculateTotal } from '../utils/calculateTotal';
@@ -18,6 +15,8 @@ import {
   CartItemsStyles,
   EmptyCartStyles,
 } from '../styles/CartStyles';
+import ContactForm from '../components/ContactForm/ContactForm';
+import Container from '../components/Container/Container';
 
 const Cart = () => {
   const cart = useComicStore((state) => state.cart);
