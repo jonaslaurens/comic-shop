@@ -11,14 +11,19 @@ const LandingStyles = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 280px);
+  padding-top: 30px;
 
   @media (min-width: 762px) {
     min-height: calc(100vh - 66px - 80px);
+    padding-top: 0;
   }
 
   a {
     padding: 0;
+  }
+
+  p {
+    text-align: center;
   }
 `;
 

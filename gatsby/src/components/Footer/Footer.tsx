@@ -13,7 +13,7 @@ const Footer = () => (
       rel="noopener noreferrer"
       target="_blank"
     >
-      Grade Your Comic
+      <span>Grade Your Comic</span>
     </GradeLinkStyles>
   </FooterStyles>
 );

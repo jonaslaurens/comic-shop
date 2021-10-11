@@ -5,28 +5,38 @@ const FooterStyles = styled.footer`
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  padding: 15px 0;
+  padding: 15px 0 50px 0;
   position: relative;
+  font-size: 1em;
 
-  @media (min-width: 800px) {
+  @media (min-width: 500px) {
     flex-direction: row;
     height: 50px;
   }
 
-  p {
-    padding: 5px 0;
+  a {
+    padding: 10px 0;
     margin: 0 20px;
   }
 `;
 
 const GradeLinkStyles = styled.a`
-  background-color: var(--red);
-  padding: 5px 10px;
-  text-decoration-color: var(--white);
   transition: 0.3s;
+  font-size: 1em;
+
+  span {
+    color: var(--red);
+    padding: 5px 20px;
+    text-decoration-color: var(--black);
+
+    &:hover {
+      color: var(--white);
+    }
+  }
 
   &:hover {
-    color: var(--white);
+    background-color: var(--red);
+    color: var(--black);
     transform: rotate(-3deg);
   }
 `;

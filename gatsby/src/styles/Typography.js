@@ -7,7 +7,7 @@ const Typography = createGlobalStyle`
     font-weight: 300;
   }
 
-  a {
+  a, span {
     font-family: 'Bangers';
     text-decoration: underline;
     color: var(--black);
@@ -21,17 +21,30 @@ const Typography = createGlobalStyle`
     }
   }
 
-  p {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   strong {
     font-weight: bold;
   }
 
   p, li {
     letter-spacing: 0.5px;
+  }
+
+  p, a, li, span {
+    font-size: 1.8em;
+    margin: 0;
+    line-height: 2.5em;
+  }
+
+  small {
+    font-size: 1.5em;
+  }
+
+  strong {
+    font-size: 1.8em;
+  }
+
+  button {
+    font-size: 1.8em;;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -43,47 +56,39 @@ const Typography = createGlobalStyle`
 
 
   h1 {
-    font-size: 4rem;
+    font-size: 4em;
     text-align: center;
     margin: .5em;
 
     @media (min-width: 440px) {
-      font-size: 5rem;
-    }
-
-    @media (min-width: 860px) {
-      font-size: 8rem;
+      font-size: 6em;
     }
 
     @media (min-width: 920px) {
-      font-size: 10rem;
+      font-size: 10em;
     }
   }
 
 
   h2 {
-    font-size: 4rem;
+    font-size: 4em;
     padding: 30px 0 40px 0;
     text-align: center;
 
     @media (min-width: 440px) {
-      font-size: 4.5rem;
+      font-size: 4.5em;
     }
 
     @media (min-width: 920px) {
-      font-size: 5rem;
+      font-size: 5em;
     }
   }
 
 
   h3 {
-    font-size: 2.8rem;
+    font-size: 2em;
     padding: 20px 0 15px 0;
     display: inline-block;
-
-    @media (min-width: 440px) {
-      font-size: 3rem;
-    }
 
   }
 
@@ -116,15 +121,7 @@ const Typography = createGlobalStyle`
     }
   }
 
-  p, a, li, span {
-    font-size: 1.8em;
-    margin: 0;
-    line-height: 4.4rem;
 
-    @media (min-width: 440px) {
-      font-size: 1.2em;
-    }
-  }
 
 
 

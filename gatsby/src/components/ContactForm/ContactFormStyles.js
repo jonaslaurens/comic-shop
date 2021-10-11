@@ -12,6 +12,14 @@ const FormStyles = styled.form`
     display: grid;
     gap: 1rem;
     align-content: start;
+    font-size: 1em;
+
+    label,
+    fieldset,
+    input,
+    legend {
+      font-size: 1.8em;
+    }
 
     label {
       input,
@@ -19,6 +27,7 @@ const FormStyles = styled.form`
         width: 100%;
         padding: 8px 5px;
         border: 1px solid var(--grey);
+        font-size: 1em;
       }
     }
   }

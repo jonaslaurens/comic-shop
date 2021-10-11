@@ -7,8 +7,7 @@ const NavStyles = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  grid-gap: 30px;
-  height: 200px;
+  grid-gap: 1em;
 
   @media (min-width: 762px) {
     height: 64px;
@@ -19,7 +18,7 @@ const NavStyles = styled.nav`
   }
 
   a {
-    font-size: 3rem;
+    font-size: 2em;
     margin: 0 40px;
     --rotate: -3deg;
     transform: rotate(var(--rotate));

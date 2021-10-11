@@ -12,13 +12,9 @@ const PublishersStyles = styled.main`
   flex-direction: column;
 
   a {
-    font-size: 2.8rem;
     padding: 20px 0 15px 0;
     display: inline-block;
-
-    @media (min-width: 440px) {
-      font-size: 3rem;
-    }
+    font-size: 3em;
   }
 `;
 

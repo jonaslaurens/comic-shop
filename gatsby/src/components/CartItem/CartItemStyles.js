@@ -29,7 +29,7 @@ export const CloseButtonStyles = styled.button`
   width: 35px;
   height: 35px;
   padding: 8px;
-  font-size: 1em;
+  font-size: 1.8em;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -25,24 +25,31 @@ const PublishersStyles = styled.main`
 const SinglePublisherStyles = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
 
   @media (min-width: 800px) {
     flex-direction: column;
+    justify-content: center;
   }
 
   img {
-    max-width: 150px !important;
+    max-width: 80px !important;
+
+    @media (min-width: 800px) {
+      max-width: 150px !important;
+    }
   }
 
   p {
     width: 50%;
-    text-align: center;
     padding: 15px 0;
+    font-size: 1em;
+    text-align: left;
 
     @media (min-width: 800px) {
+      text-align: center;
       width: 100%;
     }
   }

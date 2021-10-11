@@ -13,11 +13,10 @@ const GlobalStyles = createGlobalStyle`
     background-color: var(--white);
     background-size: 450px;
     background-attachment: fixed;
-    font-size: 10px;
   }
 
   body {
-    font-size: 2rem;
+    font-size: 10px;
     margin: 0;
   }
 
