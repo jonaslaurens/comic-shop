@@ -17,11 +17,10 @@ import {
 } from '../styles/ComicPageStyles';
 
 const Comic = ({ data, location }) => {
-  const { id } = data.comic.nodes[0];
+  const { addComicToCart } = useComicStore((state) => state);
 
-  const { getComic, addComicToCart } = useComicStore((state) => state);
-
-  const { images, serie, number, title, price, available } = getComic(id)[0];
+  const { id, images, serie, number, title, price, available } =
+    data.comic.nodes[0];
 
   return (
     <Container>
@@ -70,6 +69,18 @@ export const query = graphql`
       nodes {
         id
         _id
+        images {
+          asset {
+            gatsbyImageData
+          }
+        }
+        serie {
+          title
+        }
+        number
+        title
+        price
+        available
       }
     }
   }

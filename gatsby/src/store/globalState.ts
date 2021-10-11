@@ -125,7 +125,7 @@ export const useComicStore = create<ComicStoreState>(
         // set cart to updated cart
         return { cart: filteredCart, comics: prevComics };
       }),
-    getComic: (id) => get(id).comics.filter((item) => item.id === id),
+    getComic: (id) => get().comics.filter((item) => item.id === id),
     resetCart: () =>
       set(() =>
         // revert to empty cart
