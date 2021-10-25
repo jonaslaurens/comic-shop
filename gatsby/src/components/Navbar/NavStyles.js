@@ -31,6 +31,10 @@ const NavStyles = styled.nav`
     &:hover {
       --rotate: 6deg;
     }
+
+    @media (min-width: 762px) {
+      font-size: 2.5em;
+    }
   }
 `;
 

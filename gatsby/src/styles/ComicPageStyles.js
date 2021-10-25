@@ -3,14 +3,22 @@ import styled from 'styled-components';
 const SingleComicPageStyles = styled.main`
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns: 1fr;
+
+  @media (min-width: 650px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const ImageStyles = styled.div`
   padding: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
-    width: 100%;
+    max-width: 400px !important;
   }
 `;
 
@@ -23,6 +31,7 @@ const ComicInfoStyles = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   h2,

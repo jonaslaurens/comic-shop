@@ -13,8 +13,8 @@ export const CartStyles = styled.div`
     height: 8px;
     padding: 8px;
     font-size: 0.8em;
-    top: -5px;
-    right: -5px;
+    top: 2px;
+    right: 1px;
     display: flex;
     flex-direction: column;
     justify-content: center;

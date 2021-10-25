@@ -27,7 +27,10 @@ const Comic = ({ data, location }) => {
       <SEO title={title} location={location} description="" image="" />
       <SingleComicPageStyles>
         <ImageStyles>
-          <GatsbyImage image={getImage(images[0].asset)} alt="hello" />
+          <GatsbyImage
+            image={getImage(images[0].asset)}
+            alt={`Example of ${title} #${number}`}
+          />
         </ImageStyles>
         <ComicInfoStyles>
           <>

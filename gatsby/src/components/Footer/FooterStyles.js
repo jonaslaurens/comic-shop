@@ -5,9 +5,9 @@ const FooterStyles = styled.footer`
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  padding: 15px 0 50px 0;
+  padding: 15px 0;
   position: relative;
-  font-size: 1em;
+  font-size: 1.2em;
 
   @media (min-width: 500px) {
     flex-direction: row;
@@ -25,17 +25,18 @@ const GradeLinkStyles = styled.a`
   font-size: 1em;
 
   span {
+    font-family: inherit;
     color: var(--red);
     padding: 5px 20px;
     text-decoration-color: var(--black);
 
     &:hover {
-      color: var(--white);
+      color: var(--black);
+      text-decoration-color: var(--red);
     }
   }
 
   &:hover {
-    background-color: var(--red);
     color: var(--black);
     transform: rotate(-3deg);
   }

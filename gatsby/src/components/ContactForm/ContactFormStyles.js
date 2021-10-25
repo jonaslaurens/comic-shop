@@ -13,6 +13,8 @@ const FormStyles = styled.form`
     gap: 1rem;
     align-content: start;
     font-size: 1em;
+    position: relative;
+    margin: 0;
 
     label,
     fieldset,
@@ -24,10 +26,14 @@ const FormStyles = styled.form`
     label {
       input,
       textarea {
-        width: 100%;
+        width: 98%;
         padding: 8px 5px;
         border: 1px solid var(--grey);
         font-size: 1em;
+      }
+
+      textarea {
+        resize: none;
       }
     }
   }

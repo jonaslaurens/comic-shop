@@ -7,7 +7,11 @@ const Typography = createGlobalStyle`
     font-weight: 300;
   }
 
-  a, span {
+  p > strong {
+    font-size: 1em;
+  }
+
+  a {
     font-family: 'Bangers';
     text-decoration: underline;
     color: var(--black);
@@ -29,10 +33,10 @@ const Typography = createGlobalStyle`
     letter-spacing: 0.5px;
   }
 
-  p, a, li, span {
+  p, a, li, span, strong {
     font-size: 1.8em;
     margin: 0;
-    line-height: 2.5em;
+    line-height: 1.8em;
   }
 
   small {

@@ -83,7 +83,7 @@ const series = ({
           (comic) =>
             comic.available && (
               <Link key={comic.id} to={`/comic/${comic.slug.current}`}>
-                <motion.div whileHover={{ scale: 1.2 }}>
+                <motion.div whileHover={{ scale: 1.05 }}>
                   <SingleComicStyles>
                     <GatsbyImage
                       image={getImage(comic.images[0].asset)}
